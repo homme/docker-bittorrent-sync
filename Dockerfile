@@ -9,6 +9,7 @@ RUN tar xOzf /tmp/btsync.tar.gz btsync > /usr/bin/btsync && \
     mkdir -p /btsync/sync
 
 ADD btsync.conf /btsync/btsync.conf
+ADD btsync.sh /btsync/btsync.sh
 
 RUN chown -R btsync:btsync /btsync
 
@@ -20,4 +21,4 @@ VOLUME /btsync/sync
 
 EXPOSE 8888 55555
 
-CMD ["/usr/bin/btsync", "--config", "/btsync/btsync.conf", "--nodaemon"]
+CMD ["/btsync/btsync.sh"]
