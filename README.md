@@ -1,6 +1,6 @@
 # BitTorrent Sync docker image
 
-A docker image with [BitTorrent Sync][btsync] installed based on [Ubuntu 14.04.1][ubuntu].
+A docker image with [BitTorrent Sync][btsync] installed based on [Debian Wheezy][debian].
 
 ## Usage
 
@@ -27,4 +27,4 @@ docker run -d --name btsync -p 8888:8888 -p 55555:55555 \
 
 
 [btsync]: http://www.getsync.com/
-[ubuntu]: https://registry.hub.docker.com/_/ubuntu/
+[debian]: https://registry.hub.docker.com/_/debian/

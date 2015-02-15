@@ -1,4 +1,4 @@
-FROM ubuntu:14.04.1
+FROM debian:wheezy
 
 ADD http://download.getsyncapp.com/endpoint/btsync/os/linux-x64/track/stable /tmp/btsync.tar.gz
 
