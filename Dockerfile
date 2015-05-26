@@ -1,24 +1,21 @@
 FROM debian:wheezy
 
-ADD http://download.getsyncapp.com/endpoint/btsync/os/linux-x64/track/stable /tmp/btsync.tar.gz
+ADD https://download-cdn.getsyncapp.com/stable/linux-x64/BitTorrent-Sync_x64.tar.gz /tmp/btsync.tar.gz
 
 RUN tar xOzf /tmp/btsync.tar.gz btsync > /usr/bin/btsync && \
     chmod +x /usr/bin/btsync && \
     rm /tmp/btsync.tar.gz && \
-    useradd -m -d /btsync btsync && \
-    mkdir -p /btsync/sync
+    useradd -m -d /var/local/btsync btsync && \
+    mkdir -p /var/local/btsync
 
-ADD btsync.conf /btsync/btsync.conf
-ADD btsync.sh /btsync/btsync.sh
-
-RUN chown -R btsync:btsync /btsync
+RUN chown -R btsync:btsync /var/local/btsync
+ADD btsync.conf /etc/btsync/btsync.conf
 
 USER btsync
 
-WORKDIR /btsync/sync
-
-VOLUME /btsync/sync
+WORKDIR /var/local/btsync
+VOLUME /var/local/btsync
 
 EXPOSE 8888 55555
 
-CMD ["/btsync/btsync.sh"]
+CMD ["/usr/bin/btsync", "--config", "/etc/btsync/btsync.conf", "--nodaemon"]
