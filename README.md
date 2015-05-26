@@ -23,7 +23,7 @@ docker run -p 8888:8888 -p 55555:55555 --rm homme/btsync cat /etc/btsync/btsync.
 mkdir -p $HOME/.btsync/sync
 docker run -d --name btsync -p 8888:8888 -p 55555:55555 \
        -v $HOME/.btsync/sync:/var/local/btsync \
-       -v $HOME/.btsync/etc:/etc/btsync
+       -v $HOME/.btsync/etc:/etc/btsync \
        homme/btsync
 ```
 

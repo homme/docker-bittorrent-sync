@@ -6,12 +6,12 @@ RUN tar xOzf /tmp/btsync.tar.gz btsync > /usr/bin/btsync && \
     chmod +x /usr/bin/btsync && \
     rm /tmp/btsync.tar.gz && \
     useradd -m -d /var/local/btsync btsync && \
-    mkdir -p /var/local/btsync
+    mkdir -p /var/local/btsync /sync
 
-RUN chown -R btsync:btsync /var/local/btsync
+RUN chown -R btsync:btsync /var/local/btsync /sync
 ADD btsync.conf /etc/btsync/btsync.conf
 
-USER btsync
+#USER btsync
 
 WORKDIR /var/local/btsync
 VOLUME /var/local/btsync
